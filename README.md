@@ -15,7 +15,7 @@ Add the following plugin to your `serverless.yml` or `serverless.ts`:
 
 ```yaml
 plugins:
-  - serverless-auto-swagger
+  - serverless-auto-swagger-desc-example
 ```
 
 ```ts
