@@ -1,0 +1,26 @@
+# IDE
+.idea
+*.iml
+
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+.dynamodb
+.serverless
+
+# Webpack directories
+.webpack
+
+.serverless
+build
+
+.DS_Store
+
+# Compiled Code
+dist
+
+test-repos/**/swagger
+
