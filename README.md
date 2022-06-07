@@ -93,23 +93,23 @@ You can specify the model description and example value with suffix. ( `_DESC` /
 - `_DESC` and `_EXAMPLE` are both required.
 
 ```js
-export class Flight {
+export interface Flight {
   id: string;
-  id_DESC: 'You can write description for your model'
-  id_EXAMPLE: 'cy.lee'
+  id_DESC: 'You can write description for your model';
+  id_EXAMPLE: 'cy.lee';
   age: number;
-  age_DESC: 'You can write description for your model'
-  age_EXAMPLE: 30
+  age_DESC: 'You can write description for your model';
+  age_EXAMPLE: 30;
 }
 //or you can use type as well
 export type Flight = {
-  id: string;
-  id_DESC: 'You can write description for your model'
-  id_EXAMPLE: 'cy.lee'
-  age: number;
-  age_DESC: 'You can write description for your model'
+  id: string,
+  id_DESC: 'You can write description for your model',
+  id_EXAMPLE: 'cy.lee',
+  age: number,
+  age_DESC: 'You can write description for your model',
   age_EXAMPLE: 30
-}
+};
 ```
 
 The example value and description will already be entered in the swagger as below.
