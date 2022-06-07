@@ -86,6 +86,36 @@ This plugin uses typescript types to generate the data types for the endpoints. 
 
 You can then assign these typescript definitions to requests as `bodyType` on the http or https config, or to the response as seen just below.
 
+## Description, Example value
+
+You can specify the model description and example value with suffix. ( `_DESC` / `_EXAMPLE` )
+
+- `_DESC` and `_EXAMPLE` are both required.
+
+```js
+export class Flight {
+  id: string;
+  id_DESC: 'You can write description for your model'
+  id_EXAMPLE: 'cy.lee'
+  age: number;
+  age_DESC: 'You can write description for your model'
+  age_EXAMPLE: 30
+}
+//or you can use type as well
+export type Flight = {
+  id: string;
+  id_DESC: 'You can write description for your model'
+  id_EXAMPLE: 'cy.lee'
+  age: number;
+  age_DESC: 'You can write description for your model'
+  age_EXAMPLE: 30
+}
+```
+
+The example value and description will already be entered in the swagger as below.
+
+![Model with description, example value](./doc_images/deployedExample.png)
+
 ### Responses
 
 You can also add expected responses to each of the http endpoint events. This is an object that contains the response code with some example details:
