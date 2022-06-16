@@ -2,7 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.3.5](https://github.com/2CHAN0/serverless-auto-swagger-desc-example/compare/v2.3.4...v2.3.5) (2022-06-16)
+## [2.3.5](https://github.com/2CHAN0/serverless-auto-swagger-desc-example/compare/v2.3.4...v2.3.5) (2022-06-16)
+
+- DESC, EXAMPLE is optional now.
+- Support type extends
 
 ## [2.3.4](https://github.com/2CHAN0/serverless-auto-swagger-desc-example/compare/v2.3.3...v2.3.4) (2022-06-07)
 

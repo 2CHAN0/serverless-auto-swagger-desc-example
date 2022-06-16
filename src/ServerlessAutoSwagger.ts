@@ -211,8 +211,20 @@ class ServerlessAutoSwagger {
       const models = definitionKeys.map((key: string) => definitions[key]);
       models.map((modelAttr: Record<string, any>) => {
         if (modelAttr.properties) {
-          addDescAndExample(find_DESC(modelAttr.required), modelAttr, 'description');
-          addDescAndExample(find_EXAMPLE(modelAttr.required), modelAttr, 'example');
+          const descriptions = find_DESC(modelAttr.required);
+          const examples = find_EXAMPLE(modelAttr.required);
+          if (descriptions.length > 0) addDescAndExample(descriptions, modelAttr, 'description');
+          if (examples.length > 0) addDescAndExample(examples, modelAttr, 'example');
+        }
+        if (modelAttr.allOf) {
+          modelAttr.allOf.map((subItem: Record<string, any>) => {
+            if (subItem.properties) {
+              const descriptions = find_DESC(subItem.required);
+              const examples = find_EXAMPLE(subItem.required);
+              if (descriptions.length > 0) addDescAndExample(descriptions, subItem, 'description');
+              if (examples.length > 0) addDescAndExample(examples, subItem, 'example');
+            }
+          });
         }
       });
       fs.writeFileSync('./swagger/swagger.js', 'module.exports = ' + JSON.stringify(this.swagger), {

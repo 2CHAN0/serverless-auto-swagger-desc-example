@@ -90,7 +90,7 @@ You can then assign these typescript definitions to requests as `bodyType` on th
 
 You can specify the model description and example value with suffix. ( `_DESC` / `_EXAMPLE` )
 
-- `_DESC` and `_EXAMPLE` are both required.
+- `_DESC` and `_EXAMPLE` are optional.
 
 ```js
 export interface Flight {
@@ -115,6 +115,34 @@ export type Flight = {
 The example value and description will already be entered in the swagger as below.
 
 ![Model with description, example value](./doc_images/deployedExample.png)
+
+## Extend model
+
+The model can be extended by reusing the previously defined model.
+
+```js
+export type name = {
+  name: string
+  name_DESC: 'this is user name.'
+  name_EXAMPLE: 'cy.lee'
+}
+
+export type age = {
+  age: number
+  age_DESC: 'this is user age'
+  age_EXAMPLE: 30
+}
+
+export type user = name & age & {
+  github: string;
+  github_DESC: 'this is github address'
+  github_EXAMPLE: 'https://github.com/2CHAN0/'
+}
+```
+
+Try to reuse the model like below.
+
+![Extend model](./doc_images/modelExtend.png)
 
 ### Responses
 
