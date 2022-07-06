@@ -116,6 +116,11 @@ The example value and description will already be entered in the swagger as belo
 
 ![Model with description, example value](./doc_images/deployedExample.png)
 
+Example can also be defined in `queryStringParameter` and `pathParameter`
+
+![Model with description, example value](./doc_images/queryStringParameter.png)
+![Model with description, example value](./doc_images/pathParameter.png)
+
 ## Extend model
 
 The model can be extended by reusing the previously defined model.

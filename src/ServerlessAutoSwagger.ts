@@ -134,6 +134,10 @@ class ServerlessAutoSwagger {
                 type: 'string',
                 nullable: true,
               },
+              example: {
+                type: 'string',
+                nullable: true,
+              },
               minimum: {
                 type: 'number',
                 nullable: true,
@@ -452,18 +456,19 @@ class ServerlessAutoSwagger {
   //   return undefined
   // }
 
-  pathToParam = (pathParam: string, required = true): Parameter => ({
+  pathToParam = (pathParam: string, required = true, type: string, example: any): Parameter => ({
     name: pathParam,
     in: 'path',
     required,
-    type: 'string',
+    type,
+    default: example,
   });
 
   // The arg is actually type `HttpEvent | HttpApiEvent`, but we only use it if it has httpEvent props (or shared props),
   //  so we can lie to the compiler to make typing simpler
   httpEventToParameters = (httpEvent: HttpEvent): Parameter[] => {
     const parameters: Parameter[] = [];
-
+    console.log('7777777777777777777', httpEvent);
     if (httpEvent.bodyType) {
       parameters.push({
         in: 'body',
@@ -475,7 +480,6 @@ class ServerlessAutoSwagger {
         },
       });
     }
-
     if (httpEvent.parameters?.path) {
       const match = httpEvent.path.match(/[^{}]+(?=})/g);
       let pathParameters = match ?? [];
@@ -483,13 +487,11 @@ class ServerlessAutoSwagger {
       if (!match) {
         const rawPathParams = httpEvent.parameters.path;
 
-        Object.entries(rawPathParams).forEach(([param, required]) => {
-          parameters.push(this.pathToParam(param, required));
+        Object.entries(rawPathParams).forEach(([param, attr]) => {
+          parameters.push(this.pathToParam(param, attr.required, attr.type, attr.example));
           pathParameters = removeStringFromArray(pathParameters, param);
         });
       }
-
-      pathParameters.forEach((param) => parameters.push(this.pathToParam(param)));
     }
 
     if (httpEvent.headerParameters) {
@@ -514,6 +516,7 @@ class ServerlessAutoSwagger {
           type: data.type ?? 'string',
           description: data.description,
           required: data.required ?? false,
+          default: data.example ?? param,
           ...(data.type === 'array'
             ? {
                 items: { type: data.arrayItemsType },

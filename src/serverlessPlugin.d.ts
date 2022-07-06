@@ -100,10 +100,11 @@ export interface HttpEvent {
       description?: string;
       minimum?: number;
       arrayItemsType?: string;
+      example?: string;
     }
   >;
   parameters?: {
-    path?: Record<string, boolean>;
+    path?: Record<string, any>;
     headers?: Record<string, boolean | { required: boolean; mappedValue: string }>;
   };
 }

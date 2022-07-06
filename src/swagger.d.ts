@@ -61,6 +61,7 @@ export interface Parameter {
   required?: boolean;
   schema?: SchemaRef;
   type?: string;
+  default?: string;
 }
 export interface SchemaRef {
   $ref: string;
