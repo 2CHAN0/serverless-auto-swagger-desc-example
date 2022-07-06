@@ -168,7 +168,7 @@ class ServerlessAutoSwagger {
       const itemArr: object[] = [];
       arr.map((item) => {
         if (item.endsWith('_DESC')) {
-          itemArr.push({ originItem: item.split('_')[0], description: item });
+          itemArr.push({ originItem: item.substring(0, item.indexOf('_DESC')), description: item });
         }
       });
       return itemArr;
@@ -178,7 +178,7 @@ class ServerlessAutoSwagger {
       const itemArr: object[] = [];
       arr.map((item) => {
         if (item.endsWith('_EXAMPLE')) {
-          itemArr.push({ originItem: item.split('_')[0], example: item });
+          itemArr.push({ originItem: item.substring(0, item.indexOf('_EXAMPLE')), example: item });
         }
       });
       return itemArr;
