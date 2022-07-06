@@ -234,6 +234,7 @@ describe('ServerlessAutoSwagger', () => {
                 description: 'bob',
                 in: 'query',
                 required: true,
+                default: 'bob',
               },
               {
                 name: 'count',
@@ -241,6 +242,7 @@ describe('ServerlessAutoSwagger', () => {
                 in: 'query',
                 required: false,
                 description: undefined,
+                default: 'count',
               },
               {
                 name: 'foo',
@@ -248,6 +250,7 @@ describe('ServerlessAutoSwagger', () => {
                 in: 'query',
                 required: false,
                 description: undefined,
+                default: 'foo',
               },
             ],
             responses: {
@@ -377,6 +380,7 @@ describe('ServerlessAutoSwagger', () => {
                 description: 'bob',
                 in: 'query',
                 required: true,
+                default: 'bob',
               },
               {
                 name: 'count',
@@ -388,6 +392,7 @@ describe('ServerlessAutoSwagger', () => {
                 in: 'query',
                 required: false,
                 description: undefined,
+                default: 'count',
               },
             ],
             responses: {

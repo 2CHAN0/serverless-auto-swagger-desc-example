@@ -30,7 +30,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['*.spec.ts'],
+      files: ['*.test.ts'],
       rules: {
         'no-undef': 'off',
         '@typescript-eslint/no-explicit-any': 0,

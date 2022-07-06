@@ -2,7 +2,9 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [2.3.8](https://github.com/2CHAN0/serverless-auto-swagger-desc-example/compare/v2.3.7...v2.3.8) (2022-07-06)
+## [2.3.8](https://github.com/2CHAN0/serverless-auto-swagger-desc-example/compare/v2.3.7...v2.3.8) (2022-07-06)
+
+- Support parameter's JSON form
 
 ## [2.3.7](https://github.com/2CHAN0/serverless-auto-swagger-desc-example/compare/v2.3.6...v2.3.7) (2022-07-06)
 

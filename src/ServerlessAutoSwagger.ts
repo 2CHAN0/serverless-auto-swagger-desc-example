@@ -468,7 +468,6 @@ class ServerlessAutoSwagger {
   //  so we can lie to the compiler to make typing simpler
   httpEventToParameters = (httpEvent: HttpEvent): Parameter[] => {
     const parameters: Parameter[] = [];
-    console.log('7777777777777777777', httpEvent);
     if (httpEvent.bodyType) {
       parameters.push({
         in: 'body',
@@ -492,6 +491,11 @@ class ServerlessAutoSwagger {
           pathParameters = removeStringFromArray(pathParameters, param);
         });
       }
+
+      pathParameters.forEach((param) => {
+        const item = JSON.parse(param);
+        parameters.push(this.pathToParam(item.name, item.required, item.type, item.example));
+      });
     }
 
     if (httpEvent.headerParameters) {
