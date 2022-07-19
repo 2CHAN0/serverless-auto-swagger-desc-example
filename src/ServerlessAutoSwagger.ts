@@ -480,22 +480,23 @@ class ServerlessAutoSwagger {
       });
     }
     if (httpEvent.parameters?.path) {
-      const match = httpEvent.path.match(/[^{}]+(?=})/g);
-      let pathParameters = match ?? [];
-
-      if (!match) {
+      try {
+        //path with Json format
+        JSON.parse(httpEvent.path);
+        const pathParameters = httpEvent.path.match(/[^{}]+(?=})/g) || [];
+        pathParameters.forEach((param) => {
+          const item = JSON.parse(param);
+          parameters.push(this.pathToParam(item.name, item.required, item.type, item.example));
+        });
+      } catch {
+        //path with yaml format
         const rawPathParams = httpEvent.parameters.path;
-
+        let pathParameters: any[] = [];
         Object.entries(rawPathParams).forEach(([param, attr]) => {
           parameters.push(this.pathToParam(param, attr.required, attr.type, attr.example));
           pathParameters = removeStringFromArray(pathParameters, param);
         });
       }
-
-      pathParameters.forEach((param) => {
-        const item = JSON.parse(param);
-        parameters.push(this.pathToParam(item.name, item.required, item.type, item.example));
-      });
     }
 
     if (httpEvent.headerParameters) {
